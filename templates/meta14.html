@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Alumnos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/meta14.css') }}">
+</head>
+<body>
+
+<h1>Dashboard de Alumnos</h1>
+
+<div class="container">
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Calificación</th>
+            <th>Estatus</th>
+        </tr>
+
+        {% for alumno in datos %}
+        <tr>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.calificacion }}</td>
+            <td>
+                {% if alumno.estatus == "Aprobado" %}
+                    <span class="aprobado">Aprobado</span>
+                {% else %}
+                    <span class="reprobado">Reprobado</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Promedio</h3>
+            <p>{{ promedio }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Máximo</h3>
+            <p>{{ maximo }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Mínimo</h3>
+            <p>{{ minimo }}</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Dashboard creado con Flask + Pandas + NumPy</p>
+</footer>
+
+</body>
+</html>
